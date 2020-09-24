@@ -157,6 +157,14 @@ int main(int argc, char *argv[]) {
         printf(" %d %d %d\t\t\t%d\t%d\t%d\nRegisters: ", curr->R, curr->L, curr->M, PC, BP, SP); 
         for(i = 0; i < 8; i++)
             printf("%d ", RF[i]);
+        printf("\nStack: ");
+        if(SP > BP)
+            continue;
+        for (i = BP; i < MAX_STACK_HEIGHT; i++)
+            printf("%d ", stack[i]);
+        for (i = SP; i < BP; i++)
+            printf("%d ", stack[i]);
+        printf("\n\n");
 
     }
 
