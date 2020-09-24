@@ -7,6 +7,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define MAX_STACK_HEIGHT 1000
+#define MAX_CODE_LENGTH 500
+
 // Structs
 typedef struct {
     int op; // Opcode
@@ -25,7 +28,8 @@ int main(int argc, char *argv[]) {
     * argv[1]: 1st actual argument (should be file name)
     */
 
-   int length;
+   int SP = MAX_STACK_HEIGHT, BP = SP - 1, PC = 0, IR = 0;
+   int length, i;
    char* filename = argv[1];
    FILE* ipf = fopen(filename, "r"); //Opens the command line text file given
 
@@ -35,6 +39,19 @@ int main(int argc, char *argv[]) {
     }
 
     Instruction* prog = getInstructionFromFile(ipf, &length);
+
+    for (i = 0; i < length; i++) {
+        // Fetch cycle:
+        int IR = PC;
+        PC += 1;
+
+        Instruction* curr = &prog[IR];
+        // Execute cycle:
+        switch(curr->op) {
+
+        }
+
+    }
 
     free(prog);
     return 0;
