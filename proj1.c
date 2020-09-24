@@ -50,7 +50,7 @@ int main(int argc, char *argv[]) {
 
         Instruction* curr = &prog[IR];
         // Execute cycle:
-        switch(curr->op) {
+        switch(curr->OP) {
             case(1):
                 
                 break;
@@ -141,7 +141,7 @@ Instruction* getInstructionFromFile(FILE* file, int *len) {
     Instruction* program = (Instruction*) calloc(lines, sizeof(Instruction));
     Instruction temp;
     for (i = 0; i < lines; i++) {
-        fscanf(file, "%d %d %d %d", &temp.op, &temp.r, &temp.l, &temp.m);
+        fscanf(file, "%d %d %d %d", &temp.OP, &temp.R, &temp.L, &temp.M);
         program[i] = temp;
     }
 
