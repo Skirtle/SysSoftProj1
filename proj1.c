@@ -2,7 +2,7 @@
 // Project 1: P-Machine
 // Team:
 //  Dalton Kajander (da009211)
-//  Shawn lastname (nid)
+//  Shawn Guydeene (sh054884)
 
 #include <stdio.h>
 #include <stdlib.h>
