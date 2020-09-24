@@ -131,7 +131,6 @@ int main(int argc, char *argv[]) {
                 RF[curr->M] = RF[curr->L] >= RF[curr->M];
                 break;
         }
-
     }
 
     free(prog);
