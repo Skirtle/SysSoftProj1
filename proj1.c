@@ -149,6 +149,14 @@ int main(int argc, char *argv[]) {
                 RF[curr->M] = RF[curr->L] >= RF[curr->M];
                 break;
         }
+        
+        // Information on the state of the VM
+        printf("\n\t\t\t\tpc\tbp\tsp\n");
+        printf("%d", IR);
+        name(curr->OP);
+        printf(" %d %d %d\t\t\t%d\t%d\t%d\nRegisters: ", curr->R, curr->L, curr->M, PC, BP, SP); 
+        for(i = 0; i < 8; i++)
+            printf("%d ", RF[i]);
 
     }
 
