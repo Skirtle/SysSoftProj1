@@ -40,23 +40,15 @@ int main(int argc, char *argv[]) {
 
 Instruction* getInstructionFromFile(FILE* file, int *len) {
 
-    int i, c, lines;
-    int count = 0;
+    int i, c;
+    int lines = 0;
 
 
-    while(1) {
-        c = fgetc(file);
-        if (c == EOF || c == '\n') {
-            break;
+    for (c = getc(file); c != EOF; c = getc(file)) {
+        if (c == '\n') {
+            lines++;
         }
-        if (c != ' ') {
-            count++;
-        }
-    }
-
-    lines = count/4;
-
-    printf("Length (lines): %d\n", lines);
+    }   
 
     return NULL;
 }
