@@ -49,7 +49,7 @@ int main(int argc, char *argv[]) {
         Instruction* curr = &prog[IR];
         // Execute cycle:
         switch(curr->op) {
-
+            
         }
 
     }
