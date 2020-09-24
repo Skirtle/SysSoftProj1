@@ -55,7 +55,9 @@ int main(int argc, char *argv[]) {
                 RF[curr->R] = curr->M;
                 break;
             case(2):
-                
+                SP = BP +1;
+                BP = stack[SP-2];
+                PC = stack[SP-3];
                 break;
             case(3):
                 
