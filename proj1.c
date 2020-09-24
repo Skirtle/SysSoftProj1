@@ -77,7 +77,7 @@ int main(int argc, char *argv[]) {
                 SP = SP - curr->M;
                 break;
             case(7):
-                
+                PC = curr->M;
                 break;
             case(8):
                 if (RF[curr->R] == 0) {
