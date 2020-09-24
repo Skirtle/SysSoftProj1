@@ -52,7 +52,7 @@ int main(int argc, char *argv[]) {
         // Execute cycle:
         switch(curr->OP) {
             case(1):
-                
+                RF[curr->R] = curr->M;
                 break;
             case(2):
                 
