@@ -107,9 +107,11 @@ int main(int argc, char *argv[]) {
                 break;
             case(9):
                 if(curr->M == 1)
-                    printf("%d", RF[curr->R]);
-                else if(curr->M == 2)
+                    printf("Register %d: %d", curr->R, RF[curr->R]);
+                else if(curr->M == 2) {
+                    printf("Please enter an integer: ");
                     scanf("%d", &RF[curr->R]);
+                }
                 else if(curr->M == 3)
                     halt = 0;
                 break;
