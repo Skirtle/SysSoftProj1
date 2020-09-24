@@ -164,8 +164,14 @@ int main(int argc, char *argv[]) {
         for(i = 0; i < 8; i++)
             printf("%d ", RF[i]);
         printf("\nStack: ");
-        for (i = MAX_STACK_HEIGHT-1; i > BP; i--)
+        for (i = MAX_STACK_HEIGHT-1; i > BP; i--) {
+            for(j = 0; j < records; j++) {
+                    if (AR[j] == i) {
+                        printf("| ");
+                    }
+                }
             printf("%d ", stack[i]);
+        }
         if(SP < BP) {
             for (i = BP; i >= SP; i--) {
                 for(j = 0; j < records; j++) {
