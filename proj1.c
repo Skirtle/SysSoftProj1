@@ -47,10 +47,10 @@ int main(int argc, char *argv[]) {
     while (halt) {
         // Fetch cycle:
         int IR = PC;
+        Instruction* curr = &prog[IR];
         PC += 1;
         printf("%d\n", curr->OP);
 
-        Instruction* curr = &prog[IR];
         // Execute cycle:
         switch(curr->OP) {
             case(1):
