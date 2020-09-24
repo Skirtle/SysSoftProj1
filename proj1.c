@@ -45,10 +45,8 @@ int main(int argc, char *argv[]) {
 }
 
 Instruction* getInstructionFromFile(FILE* file, int *len) {
-
     int i, c;
     int lines = 1;
-
 
     for (c = getc(file); c != EOF; c = getc(file)) {
         if (c == '\n') {
