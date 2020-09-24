@@ -35,11 +35,6 @@ int main(int argc, char *argv[]) {
 
     Instruction* prog = getInstructionFromFile(ipf, &length);
 
-    int i;
-    for (i = 0; i < length; i++) {
-        printf("%d %d %d %d\n", prog[i].op, prog[i].r, prog[i].l, prog[i].m);
-    }
-
     free(prog);
     return 0;
 }
