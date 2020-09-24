@@ -13,10 +13,10 @@
 
 // Structs
 typedef struct {
-    int op; // Opcode
-    int r; // R
-    int l; // L
-    int m; // M
+    int OP; // Opcode
+    int R; // R
+    int L; // L
+    int M; // M
 } Instruction;
 
 // Prototypes
