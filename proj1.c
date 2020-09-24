@@ -80,9 +80,7 @@ int main(int argc, char *argv[]) {
                 
                 break;
             case(8):
-                if (RF[curr->R] == 0) {
-                    PC = curr->M;
-                }
+                if (RF[curr->R] == 0)  PC = curr->M;
                 break;
             case(9):
                 
