@@ -30,6 +30,8 @@ int main(int argc, char *argv[]) {
     */
 
    int SP = MAX_STACK_HEIGHT, BP = SP - 1, PC = 0, IR = 0;
+   int* stack = (int *)calloc(MAX_STACK_HEIGHT, sizeof(int));
+   int* RF = (int *)calloc(8, sizeof(int));
    int length, i;
    char* filename = argv[1];
    FILE* ipf = fopen(filename, "r"); //Opens the command line text file given
