@@ -61,7 +61,7 @@ int main(int argc, char *argv[]) {
                 PC = stack[SP-3];
                 break;
             case(3):
-                
+                RF[curr->R] = stack[base(curr->L, BP, stack) - curr->M];
                 break;
             case(4):
                 
