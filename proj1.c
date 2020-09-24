@@ -52,6 +52,15 @@ int main(int argc, char *argv[]) {
         name(prog[i].OP);
         printf("\t%d\t%d\t%d\n", prog[i].R, prog[i].L, prog[i].M);
     }
+    
+    printf("\n\t\t\t\tpc\tbp\tsp\n");  						
+    printf("Initial values\t\t\t%d\t%d\t%d\nRegisters: "); 
+    for(i = 0; i < 8; i++)
+        printf("%d ", RF[i]);
+    printf("\nStack: " );
+    for(i = 0; i < 40; i++)
+        printf("0 ");
+    printf("\n");
 
     while (halt) {
         // Fetch cycle:
