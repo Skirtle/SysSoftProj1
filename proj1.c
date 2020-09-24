@@ -24,6 +24,7 @@ int main(int argc, char *argv[]) {
     * argv[1]: 1st actual argument (should be file name)
     */
 
+   int length;
    char* filename = argv[1];
    FILE* ipf = fopen(filename, "r"); //Opens the command line text file given
 
@@ -32,9 +33,30 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
+    getInstructionFromFile(ipf, &length);
+
     return 0;
 }
 
 Instruction* getInstructionFromFile(FILE* file, int *len) {
 
+    int i, c, lines;
+    int count = 0;
+
+
+    while(1) {
+        c = fgetc(file);
+        if (c == EOF || c == '\n') {
+            break;
+        }
+        if (c != ' ') {
+            count++;
+        }
+    }
+
+    lines = count/4;
+
+    printf("Length (lines): %d\n", lines);
+
+    return NULL;
 }
