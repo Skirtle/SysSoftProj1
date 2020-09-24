@@ -84,6 +84,7 @@ int main(int argc, char *argv[]) {
                 break;
             case(4):
                 stack[base(curr->L, BP, stack) - curr->M] = RF[curr->R];
+                //stack[base(curr->L, BP, stack) + IR[curr->M]] = RF[curr->R]
                 break;
             case(5):
                 stack[SP-1] = base(curr->L, BP, stack);
