@@ -86,13 +86,13 @@ int main(int argc, char *argv[]) {
                 
                 break;
             case(10):
-                
+                RF[curr->R] = -RF[curr->R];
                 break;
             case(11):
                 
                 break;
             case(12):
-                
+                RF[curr->M] = RF[curr->L] - RF[curr->M];
                 break;
             case(13):
                 
