@@ -115,7 +115,6 @@ int main(int argc, char *argv[]) {
             case(22):
                 
                 break;
->>>>>>> c1fe1db23b1fe428a8c8140a47648cd7ce2279d8
         }
 
     }
