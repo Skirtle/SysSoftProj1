@@ -48,7 +48,9 @@ Instruction* getInstructionFromFile(FILE* file, int *len) {
         if (c == '\n') {
             lines++;
         }
-    }   
+    }
+    rewind(file);
 
+    
     return NULL;
 }
