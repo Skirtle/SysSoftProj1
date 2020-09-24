@@ -18,6 +18,7 @@ typedef struct {
 // Prototypes
 Instruction* getInstructionFromFile(FILE* file, int *len);
 
+// Main function
 int main(int argc, char *argv[]) {
     /* Helpful information
     * argv[0]: .exe location
@@ -39,6 +40,7 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 
+// Function bodies
 Instruction* getInstructionFromFile(FILE* file, int *len) {
     int i, c;
     int lines = 1;
