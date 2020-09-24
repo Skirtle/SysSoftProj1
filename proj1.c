@@ -87,7 +87,7 @@ int main(int argc, char *argv[]) {
                 if(curr->M == 1)
                     printf("%d", RF[curr->R]);
                 else if(curr->M == 2)
-                    scanf("%d", RF[curr->R]);
+                    scanf("%d", &RF[curr->R]);
                 else if(curr->M == 3)
                     halt = 0;
                 break;
