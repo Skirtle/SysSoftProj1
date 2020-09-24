@@ -33,7 +33,7 @@ int main(int argc, char *argv[]) {
    int SP = MAX_STACK_HEIGHT, BP = SP - 1, PC = 0, IR = 0;
    int* stack = (int *)calloc(MAX_STACK_HEIGHT, sizeof(int));
    int* RF = (int *)calloc(8, sizeof(int));
-   int length, i;
+   int length, i, halt = 1;
    char* filename = argv[1];
    FILE* ipf = fopen(filename, "r"); //Opens the command line text file given
 
@@ -44,7 +44,7 @@ int main(int argc, char *argv[]) {
 
     Instruction* prog = getInstructionFromFile(ipf, &length);
 
-    for (i = 0; i < length; i++) {
+    while (halt) {
         // Fetch cycle:
         int IR = PC;
         PC += 1;
@@ -83,7 +83,12 @@ int main(int argc, char *argv[]) {
                 if (RF[curr->R] == 0)  PC = curr->M;
                 break;
             case(9):
-                
+                if(curr->M == 1)
+                    printf("%d", RF[curr->R]);
+                else if(curr->M == 2)
+                    scanf("%d", RF[curr->R]);
+                else if(curr->M == 3)
+                    halt = 0;
                 break;
             case(10):
                 RF[curr->R] = -RF[curr->R];
