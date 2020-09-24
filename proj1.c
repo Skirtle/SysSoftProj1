@@ -94,37 +94,37 @@ int main(int argc, char *argv[]) {
                 RF[curr->R] = -RF[curr->R];
                 break;
             case(11):
-                
+                RF[curr->R] = RF[curr->L] + RF[curr->M];
                 break;
             case(12):
                 RF[curr->M] = RF[curr->L] - RF[curr->M];
                 break;
             case(13):
-                
+                RF[curr->R] = RF[curr->L] * RF[curr->M];
                 break;
             case(14):
                 RF[curr->M] = RF[curr->L] / RF[curr->M];
                 break;
             case(15):
-                
+                RF[curr->R] = RF[curr->R] % 2;
                 break;
             case(16):
                 RF[curr->M] = RF[curr->L] % RF[curr->M];
                 break;
             case(17):
-                
+                RF[curr->R] = RF[curr->L] == RF[curr->M];
                 break;
             case(18):
                 RF[curr->M] = RF[curr->L] != RF[curr->M];
                 break;
             case(19):
-                
+                RF[curr->R] = RF[curr->L] < RF[curr->M];
                 break;
             case(20):
                 RF[curr->M] = RF[curr->L] <= RF[curr->M];
                 break;
             case(21):
-                
+                RF[curr->R] = RF[curr->L] > RF[curr->M];
                 break;
             case(22):
                 RF[curr->M] = RF[curr->L] >= RF[curr->M];
