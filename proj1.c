@@ -43,6 +43,81 @@ int main(int argc, char *argv[]) {
     }
 
     Instruction* prog = getInstructionFromFile(ipf, &length);
+    
+    // Printing out the program
+    printf("Line\tOP\tR\tL\tM\n");
+    for (i = 0; i < length; i++) {
+        printf("%d\t", i);
+        switch(prog[i].OP) {
+            case(1):
+                printf("LIT");
+                break;
+            case(2):
+                printf("RTN");
+                break;
+            case(3):
+                printf("LOD");
+                break;
+            case(4):
+                printf("STO");
+                break;
+            case(5):
+                printf("CAL");
+                break;
+            case(6):
+                printf("INC");
+                break;
+            case(7):
+                printf("JMP");
+                break;
+            case(8):
+                printf("JPC");
+                break;
+            case(9):
+                printf("SYS");
+                break;
+            case(10):
+                printf("NEG");
+                break;
+            case(11):
+                printf("ADD");
+                break;
+            case(12):
+                printf("SUB");
+                break;
+            case(13):
+                printf("MUL");
+                break;
+            case(14):
+                printf("DIV");
+                break;
+            case(15):
+                printf("ODD");
+                break;
+            case(16):
+                printf("MOD");
+                break;
+            case(17):
+                printf("EQL");
+                break;
+            case(18):
+                printf("NEQ");
+                break;
+            case(19):
+                printf("LSS");
+                break;
+            case(20):
+                printf("LEQ");
+                break;
+            case(21):
+                printf("GTR");
+                break;
+            case(22):
+                printf("GEQ");
+                break;
+        }
+        printf("\t%d\t%d\t%d\n", prog[i].R, prog[i].L, prog[i].M);
+    }
 
     while (halt) {
         // Fetch cycle:
@@ -131,6 +206,7 @@ int main(int argc, char *argv[]) {
                 RF[curr->M] = RF[curr->L] >= RF[curr->M];
                 break;
         }
+
     }
 
     free(prog);
