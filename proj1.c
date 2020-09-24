@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// Defines and globals
 #define MAX_STACK_HEIGHT 1000
 #define MAX_CODE_LENGTH 500
 
