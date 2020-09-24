@@ -103,31 +103,31 @@ int main(int argc, char *argv[]) {
                 
                 break;
             case(14):
-                
+                RF[curr->M] = RF[curr->L] / RF[curr->M];
                 break;
             case(15):
                 
                 break;
             case(16):
-                
+                RF[curr->M] = RF[curr->L] % RF[curr->M];
                 break;
             case(17):
                 
                 break;
             case(18):
-                
+                RF[curr->M] = RF[curr->L] != RF[curr->M];
                 break;
             case(19):
                 
                 break;
             case(20):
-                
+                RF[curr->M] = RF[curr->L] <= RF[curr->M];
                 break;
             case(21):
                 
                 break;
             case(22):
-                
+                RF[curr->M] = RF[curr->L] >= RF[curr->M];
                 break;
         }
 
