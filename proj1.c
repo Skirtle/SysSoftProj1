@@ -33,8 +33,9 @@ int main(int argc, char *argv[]) {
 
    int SP = MAX_STACK_HEIGHT, BP = SP - 1, PC = 0, IR = 0;
    int* stack = (int *)calloc(MAX_STACK_HEIGHT, sizeof(int));
+   int* AR = (int *)calloc(MAX_STACK_HEIGHT, sizeof(int));
    int* RF = (int *)calloc(8, sizeof(int));
-   int length, i, halt = 1;
+   int length, i, j, halt = 1, records = 0;
    char* filename = argv[1];
    FILE* ipf = fopen(filename, "r"); //Opens the command line text file given
 
@@ -44,7 +45,7 @@ int main(int argc, char *argv[]) {
     }
 
     Instruction* prog = getInstructionFromFile(ipf, &length);
-    
+
     // Printing out the program
     printf("Line\tOP\tR\tL\tM\n");
     for (i = 0; i < length; i++) {
@@ -52,13 +53,13 @@ int main(int argc, char *argv[]) {
         name(prog[i].OP);
         printf("\t%d\t%d\t%d\n", prog[i].R, prog[i].L, prog[i].M);
     }
-    
-    printf("\n\t\t\t\tpc\tbp\tsp\n");  						
-    printf("Initial values\t\t\t%d\t%d\t%d\nRegisters: "); 
+
+    printf("\n\t\t\t\tpc\tbp\tsp\n");
+    printf("Initial values\t\t\t%d\t%d\t%d\nRegisters: ", PC, BP, SP);
     for(i = 0; i < 8; i++)
         printf("%d ", RF[i]);
     printf("\nStack: " );
-    for(i = 0; i < 40; i++)
+    for(i = 0; i < 30; i++)
         printf("0 ");
     printf("\n");
 
@@ -67,7 +68,6 @@ int main(int argc, char *argv[]) {
         int IR = PC;
         Instruction* curr = &prog[IR];
         PC += 1;
-        printf("%d\n", curr->OP);
 
         // Execute cycle:
         switch(curr->OP) {
@@ -84,13 +84,14 @@ int main(int argc, char *argv[]) {
                 break;
             case(4):
                 stack[base(curr->L, BP, stack) - curr->M] = RF[curr->R];
-                //stack[base(curr->L, BP, stack) + IR[curr->M]] = RF[curr->R]
                 break;
             case(5):
                 stack[SP-1] = base(curr->L, BP, stack);
                 stack[SP-2] = BP;
                 stack[SP-3] = PC;
                 BP = SP - 1;
+                AR[records] = BP;
+                records++;
                 PC = curr->M;
                 break;
             case(6):
@@ -100,7 +101,9 @@ int main(int argc, char *argv[]) {
                 PC = curr->M;
                 break;
             case(8):
-                if (RF[curr->R] == 0)  PC = curr->M;
+                if (RF[curr->R] == 0) {
+                    PC = curr->M;
+                }
                 break;
             case(9):
                 if(curr->M == 1)
@@ -150,23 +153,28 @@ int main(int argc, char *argv[]) {
                 RF[curr->R] = RF[curr->L] >= RF[curr->M];
                 break;
         }
-        
+
         // Information on the state of the VM
         printf("\n\t\t\t\tpc\tbp\tsp\n");
-        printf("%d", IR);
+        printf("%d ", IR);
         name(curr->OP);
         printf(" %d %d %d\t\t\t%d\t%d\t%d\nRegisters: ", curr->R, curr->L, curr->M, PC, BP, SP); 
         for(i = 0; i < 8; i++)
             printf("%d ", RF[i]);
         printf("\nStack: ");
-        if(SP > BP)
-            continue;
-        for (i = BP; i < MAX_STACK_HEIGHT; i++)
+        for (i = MAX_STACK_HEIGHT-1; i > BP; i--)
             printf("%d ", stack[i]);
-        for (i = SP; i < BP; i++)
-            printf("%d ", stack[i]);
-        printf("\n\n");
-
+        if(SP < BP) {
+            for (i = BP; i >= SP; i--) {
+                for(j = 0; j < records; j++) {
+                    if (AR[j] == i) {
+                        printf("| ");
+                    }
+                }
+                printf("%d ", stack[i]);
+            }
+        }
+        printf("\n");
     }
 
     free(prog);
