@@ -48,6 +48,7 @@ int main(int argc, char *argv[]) {
         // Fetch cycle:
         int IR = PC;
         PC += 1;
+        printf("%d\n", curr->OP);
 
         Instruction* curr = &prog[IR];
         // Execute cycle:
