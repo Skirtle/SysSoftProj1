@@ -21,6 +21,7 @@ typedef struct {
 
 // Prototypes
 Instruction* getInstructionFromFile(FILE* file, int *len);
+int base(int l, int base, int* stack);
 
 // Main function
 int main(int argc, char *argv[]) {
@@ -148,4 +149,14 @@ Instruction* getInstructionFromFile(FILE* file, int *len) {
     }
 
     return program;
+}
+
+int base(int l, int base, int* stack) {
+    int b1 = base;
+
+    while(l > 0) {
+        b1 = stack[b1];
+        l--;
+    }
+    return b1;
 }
