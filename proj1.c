@@ -33,15 +33,21 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    getInstructionFromFile(ipf, &length);
+    Instruction* prog = getInstructionFromFile(ipf, &length);
 
+    int i;
+    for (i = 0; i < length; i++) {
+        printf("%d %d %d %d\n", prog[i].op, prog[i].r, prog[i].l, prog[i].m);
+    }
+
+    free(prog);
     return 0;
 }
 
 Instruction* getInstructionFromFile(FILE* file, int *len) {
 
     int i, c;
-    int lines = 0;
+    int lines = 1;
 
 
     for (c = getc(file); c != EOF; c = getc(file)) {
@@ -49,8 +55,15 @@ Instruction* getInstructionFromFile(FILE* file, int *len) {
             lines++;
         }
     }
+    *len = lines;
     rewind(file);
 
-    
-    return NULL;
+    Instruction* program = (Instruction*) calloc(lines, sizeof(Instruction));
+    Instruction temp;
+    for (i = 0; i < lines; i++) {
+        fscanf(file, "%d %d %d %d", &temp.op, &temp.r, &temp.l, &temp.m);
+        program[i] = temp;
+    }
+
+    return program;
 }
