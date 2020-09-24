@@ -7,6 +7,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// Structs
+typedef struct {
+    int op; // Opcode
+    int r; // R
+    int l; // L
+    int m; // M
+} Instruction;
+
+
 int main() {
     // Main
 
